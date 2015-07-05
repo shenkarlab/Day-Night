@@ -1,7 +1,8 @@
 <?php
 
+header("Cache-Control: no-cache, must-revalidate");
+header("Content-Type: application/xml; charset=utf-8");
 header('Content-Type: text/html; charset=utf-8');
-
 
 
 if(!isset($_POST['inp'])){
