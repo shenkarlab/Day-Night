@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<META HTTP-EQUIV="Content-language" CONTENT="he">
+	
+		<title>Day & Night</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
+		<link href='style.css' rel='stylesheet' />
+		<script src="jquery-ui.min.js"></script>
+	
+	</head>
+
+	<body onload="showUser()">
+
+
+<main>
+
+		<section id="mid">	<section id="topBar"></section>		</section>
+		<button id="searchBtn"></button><input id="search" type="text" placeholder="חיפוש">
+
+		
+		<div id='map'></div>
+
+
+
+		<button id="locaBtn"></button>
+
+		<form id="newLocation" action="updateJSON1.php" method="POST">
+			
+			<input name="name" class="A checkLoc" type="text" placeholder="שם" required>
+			
+			<select name="cat" class="selectA checkLoc">
+			  <option value="1" selected>בית קפה</option>
+			  <option value="2">פאב</option>
+			  <option value="3">מסעדה</option>
+			  <option value="4">מוזאון</option>
+			  <option value="5">פנאי</option> <!-- Both use the same icn -->
+			  <option value="6">קניון</option> <!-- Both use the same icn -->
+			  <option value="7">גלידריה</option>
+			  <option value="8">לונה פארק</option>
+			  <option value="9">קולנוע</option>
+			  <option value="10">חופים</option>
+			  <option value="11">ג'אנק פוד</option>
+			  <option value="12">פארקים</option>
+			</select>
+			
+			<label class="labelA">שעות פתיחה</label><br>
+			<label class="labelB">א-ה</label>
+			<input name="wOp" class="B checkLoc" type="text" required >
+			<input name="wCl" class="B checkLoc" type="text" required ><br>
+			<label class="labelB">שישי</label>
+			<input name="sOp" class="B checkLoc" type="text" required >
+			<input name="sCl" class="B checkLoc" type="text" required ><br>
+			<label class="labelB">שבת</label>
+			<input name="eOp" class="B checkLoc" type="text" required >
+			<input name="eCl" class="B checkLoc" type="text" required ><br>
+			<input name="tel" class="A checkLoc" type="text" placeholder="טלפון" required >
+			<input name="add" class="A checkLoc" type="text" placeholder="כתובת" required >
+			<input name="url" class="A checkLoc" type="text" placeholder="URL" required >
+
+			<a href="http://www.latlong.net/convert-address-to-lat-long.html" target="_blank"><label class="labelA labelLink">לחץ להזנת מיקום</label></a><br>
+
+			<input name="lat" class="B2 checkLoc" type="text" placeholder="רוחב" required >
+			<input name="lng" class="B2 checkLoc" type="text" placeholder="אורך" required ><br>
+		
+
+	<!-- Hidden Unti-B0t input, incase bot will fill this filed i will not receive the connection in the server Side -->
+			<input id="untiB0t" type="number" name="inp">
+
+			<button id="locaBtnSend">שלוח</button>
+		</form>
+
+
+
+		<input id="range" class="range" type="range" min="0.001" max="24" step="any" > 
+
+
+</main>
+
+	</body>
+	
+	<footer><script src='./js.js'></script><script src='./search.js'></script><script src='./sendAjax.js'></script></footer>
+
+	
+</html>
