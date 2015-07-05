@@ -5,13 +5,43 @@ function showUser(){
 
     range = document.getElementById('range');
     globalVar = "super1";
+    globalVar2 = "Sunday";
 
 
-	var geoJson1 = [];
-	var geoJson2 = [];
-	var geoJson3 = [];
-	var geoJson4 = [];
-	var geoJson5 = [];
+    var geoJson1 = [];
+    var geoJson2 = [];
+    var geoJson3 = [];
+    var geoJson4 = [];
+    var geoJson5 = [];
+
+    var geoJson1Swapper = [];
+    var geoJson2Swapper = [];
+    var geoJson3Swapper = [];
+    var geoJson4Swapper = [];
+    var geoJson5Swapper = [];
+
+
+
+        $.ajax({
+                type : "POST",
+                url : './getToday.php',
+                data : {
+
+                },
+                success : function(data) {
+
+                    globalVar2 = data;
+                
+                },
+                error : function(req, errortype) {
+                    console.log("ERROR"); 
+                }
+        });
+
+
+
+
+
 
 
 	if (window.XMLHttpRequest) {
@@ -25,11 +55,12 @@ function showUser(){
         }
 
 
-        xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function(){
 
         	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
         		var temp = JSON.parse(xmlhttp.responseText);
+
 
 
         		var m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0;
@@ -40,94 +71,102 @@ function showUser(){
         												// while i needed to copy "by value"
 
 
-
-
-                    if( temp[i].properties.icon.iconUrl[1] == "."){ // setting up the specific icon for the map
-
-
-
-            			if(temp[i].map1 == "1"){
-
-            				geoJson1[m1] =  jQuery.extend(true, {}, temp[i]);
-            				geoJson1[m1].properties.icon.iconUrl = "./img/"+geoJson1[m1].properties.icon.iconUrl[0]+"1.png";
-            				m1++;
-            			}
-
-            			if(temp[i].map2 == "1"){
-
-            				geoJson2[m2] = jQuery.extend(true, {}, temp[i]);
-            				geoJson2[m2].properties.icon.iconUrl = "./img/"+ geoJson2[m2].properties.icon.iconUrl[0]+"2.png";
-            				m2++;
-            			}
-
-            			if(temp[i].map3 == "1"){
-
-            				geoJson3[m3] = jQuery.extend(true, {}, temp[i]);
-            				geoJson3[m3].properties.icon.iconUrl = "./img/"+geoJson3[m3].properties.icon.iconUrl[0]+"3.png";
-            				m3++;
-            			}
-
-            			if(temp[i].map4 == "1"){
-
-            				geoJson4[m4] = jQuery.extend(true, {}, temp[i]);
-            				geoJson4[m4].properties.icon.iconUrl = "./img/"+geoJson4[m4].properties.icon.iconUrl[0]+"4.png";
-            				m4++;
-            			}
-
-            			if(temp[i].map5 == "1"){
-
-            				geoJson5[m5] = jQuery.extend(true, {}, temp[i]);
-            				geoJson5[m5].properties.icon.iconUrl = "./img/"+geoJson5[m5].properties.icon.iconUrl[0]+"5.png";
-            				m5++;
-            			}
-
-                    }else{
+                            if( temp[i].properties.icon.iconUrl[1] == "."){ // setting up the specific icon for the map
 
 
 
-                        if(temp[i].map1 == "1"){
+                    			if(temp[i].map1 == "1"){
 
-                            geoJson1[m1] =  jQuery.extend(true, {}, temp[i]);
-                            geoJson1[m1].properties.icon.iconUrl = "./img/"+geoJson1[m1].properties.icon.iconUrl[0]+geoJson1[m1].properties.icon.iconUrl[1]+"1.png";
-                            m1++;
-                        }
+                    				geoJson1[m1] =  jQuery.extend(true, {}, temp[i]);
+                    				geoJson1[m1].properties.icon.iconUrl = "./img/"+geoJson1[m1].properties.icon.iconUrl[0]+"1.png";
+                    				m1++;
+                    			}
 
-                        if(temp[i].map2 == "1"){
+                    			if(temp[i].map2 == "1"){
 
-                            geoJson2[m2] = jQuery.extend(true, {}, temp[i]);
-                            geoJson2[m2].properties.icon.iconUrl = "./img/"+geoJson2[m2].properties.icon.iconUrl[0]+geoJson2[m2].properties.icon.iconUrl[1]+"2.png";
-                            m2++;
-                        }
+                    				geoJson2[m2] = jQuery.extend(true, {}, temp[i]);
+                    				geoJson2[m2].properties.icon.iconUrl = "./img/"+ geoJson2[m2].properties.icon.iconUrl[0]+"2.png";
+                    				m2++;
+                    			}
 
-                        if(temp[i].map3 == "1"){
+                    			if(temp[i].map3 == "1"){
 
-                            geoJson3[m3] = jQuery.extend(true, {}, temp[i]);
-                            geoJson3[m3].properties.icon.iconUrl = "./img/"+geoJson3[m3].properties.icon.iconUrl[0]+geoJson3[m3].properties.icon.iconUrl[1]+"3.png";
-                            m3++;
-                        }
+                    				geoJson3[m3] = jQuery.extend(true, {}, temp[i]);
+                    				geoJson3[m3].properties.icon.iconUrl = "./img/"+geoJson3[m3].properties.icon.iconUrl[0]+"3.png";
+                    				m3++;
+                    			}
 
-                        if(temp[i].map4 == "1"){
+                    			if(temp[i].map4 == "1"){
 
-                            geoJson4[m4] = jQuery.extend(true, {}, temp[i]);
-                            geoJson4[m4].properties.icon.iconUrl = "./img/"+geoJson4[m4].properties.icon.iconUrl[0]+geoJson4[m4].properties.icon.iconUrl[1]+"4.png";
-                            m4++;
-                        }
+                    				geoJson4[m4] = jQuery.extend(true, {}, temp[i]);
+                    				geoJson4[m4].properties.icon.iconUrl = "./img/"+geoJson4[m4].properties.icon.iconUrl[0]+"4.png";
+                    				m4++;
+                    			}
 
-                        if(temp[i].map5 == "1"){
+                    			if(temp[i].map5 == "1"){
 
-                            geoJson5[m5] = jQuery.extend(true, {}, temp[i]);
-                            geoJson5[m5].properties.icon.iconUrl = "./img/"+ geoJson5[m5].properties.icon.iconUrl[0]+geoJson5[m5].properties.icon.iconUrl[1]+"5.png";
-                            m5++;
-                        }
+                    				geoJson5[m5] = jQuery.extend(true, {}, temp[i]);
+                    				geoJson5[m5].properties.icon.iconUrl = "./img/"+geoJson5[m5].properties.icon.iconUrl[0]+"5.png";
+                    				m5++;
+                    			}
 
-
-                    }
-
-
-        		}
+                            }else{
 
 
-        	}
+
+                                if(temp[i].map1 == "1"){
+
+                                    geoJson1[m1] =  jQuery.extend(true, {}, temp[i]);
+                                    geoJson1[m1].properties.icon.iconUrl = "./img/"+geoJson1[m1].properties.icon.iconUrl[0]+geoJson1[m1].properties.icon.iconUrl[1]+"1.png";
+                                    m1++;
+                                }
+
+                                if(temp[i].map2 == "1"){
+
+                                    geoJson2[m2] = jQuery.extend(true, {}, temp[i]);
+                                    geoJson2[m2].properties.icon.iconUrl = "./img/"+geoJson2[m2].properties.icon.iconUrl[0]+geoJson2[m2].properties.icon.iconUrl[1]+"2.png";
+                                    m2++;
+                                }
+
+                                if(temp[i].map3 == "1"){
+
+                                    geoJson3[m3] = jQuery.extend(true, {}, temp[i]);
+                                    geoJson3[m3].properties.icon.iconUrl = "./img/"+geoJson3[m3].properties.icon.iconUrl[0]+geoJson3[m3].properties.icon.iconUrl[1]+"3.png";
+                                    m3++;
+                                }
+
+                                if(temp[i].map4 == "1"){
+
+                                    geoJson4[m4] = jQuery.extend(true, {}, temp[i]);
+                                    geoJson4[m4].properties.icon.iconUrl = "./img/"+geoJson4[m4].properties.icon.iconUrl[0]+geoJson4[m4].properties.icon.iconUrl[1]+"4.png";
+                                    m4++;
+                                }
+
+                                if(temp[i].map5 == "1"){
+
+                                    geoJson5[m5] = jQuery.extend(true, {}, temp[i]);
+                                    geoJson5[m5].properties.icon.iconUrl = "./img/"+ geoJson5[m5].properties.icon.iconUrl[0]+geoJson5[m5].properties.icon.iconUrl[1]+"5.png";
+                                    m5++;
+                                }
+
+
+                            }
+
+
+
+        		} // LOOP ENDS ##################################33
+
+
+/*
+                $.extend( geoJson1Swapper, geoJson1 );
+                $.extend( geoJson2Swapper, geoJson2 );
+                $.extend( geoJson3Swapper, geoJson3 );
+                $.extend( geoJson4Swapper, geoJson4 );
+                $.extend( geoJson5Swapper, geoJson5 );
+*/
+
+
+        	} // ############################################
 
         }
 
@@ -225,8 +264,9 @@ function showUser(){
 
 
 
+                if(range.value < 6){ //##################################################################### MAP 5
 
-                if(range.value < 6){
+                     var myIndex2 =0;
 
                     map1.getContainer().style.display = 'none';
                     map2.getContainer().style.display = 'none'; 
@@ -238,11 +278,58 @@ function showUser(){
                     globalVar = "super2";
 
 
-                    dataMap1.clearLayers();
-                    dataMap1.setGeoJSON(geoJson5);
 
-                }
+                        if(globalVar2 == "Saturday"){ 
+
+                            for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
+
+                                    if(geoJson5[myIndex].eclose > range.value || geoJson5[myIndex].eopen == 999){
+
+                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                        myIndex2++;
+                                    }
+                            }
+
+
+                        }
+                        else if(globalVar2 == "Friday"){
+
+
+                            for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
+
+                                    if(geoJson5[myIndex].sclose > range.value || geoJson5[myIndex].sopen == 999){
+
+                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                        myIndex2++;
+                                    }
+                            }
+
+
+                        }
+                        else{ // middle of the week
+
+
+                            for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
+
+                                    if(geoJson5[myIndex].wclose > range.value || geoJson5[myIndex].wopen == 999){
+
+                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                        myIndex2++;
+                                 }
+
+                            }
+
+                        }
+
+
+
+                    dataMap1.clearLayers();
+                    dataMap1.setGeoJSON(geoJson5Swapper);
+
+                }// #################################################################################################### MAP 1
         		else if(range.value < 12 && range.value >= 6 ){
+
+                    var myIndex2 =0;
 
         			map1.getContainer().style.display = 'block';
         			map2.getContainer().style.display = 'none'; 
@@ -250,14 +337,60 @@ function showUser(){
         			map4.getContainer().style.display = 'none'; 
         			map5.getContainer().style.display = 'none'; 
 
-
-                           
                     globalVar = "super1";
 
+
+
+                        if(globalVar2 == "Saturday"){
+
+                                for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
+
+
+                                    if(geoJson1[myIndex].eclose > range.value  || geoJson1[myIndex].eopen == 999){
+
+                                        geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
+                                        myIndex2++;
+                                    }
+
+                                }
+
+                        }
+                        else if(globalVar2 =="Friday"){
+
+                                for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
+
+
+                                    if(geoJson1[myIndex].sclose > range.value  || geoJson1[myIndex].sopen == 999){
+
+                                        geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
+                                        myIndex2++;
+                                    }
+
+                                }
+
+                        }
+                        else{
+
+
+                                for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
+
+
+                                    if(geoJson1[myIndex].wclose > range.value  || geoJson1[myIndex].wopen == 999){
+
+                                        geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
+                                        myIndex2++;
+                                    }
+
+                                }
+                          } 
+
         			dataMap1.clearLayers();
-        			dataMap1.setGeoJSON(geoJson1);
-        		}
+        			dataMap1.setGeoJSON(geoJson1Swapper);
+
+        		}// ########################################################################################## MAP 2
         		else if(range.value < 16 && range.value >= 12){
+
+                    var myIndex2 =0;
 
         			map1.getContainer().style.display = 'none';
         			map2.getContainer().style.display = 'block'; 
@@ -269,11 +402,63 @@ function showUser(){
 
                     globalVar = "super1";
 
-        			dataMap1.clearLayers();
-        			dataMap1.setGeoJSON(geoJson2);
 
-        		}
+
+                        if(globalVar2 == "Saturday"){
+
+                                for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
+
+
+                                    if(geoJson2[myIndex].eopen < range.value && geoJson2[myIndex].eclose > range.value || geoJson2[myIndex].eopen == 999){
+
+                                        
+                                        geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
+                                        myIndex2++;
+                                    }
+
+
+                                }
+
+                        }
+                        else if(globalVar2 =="Friday"){
+
+                                for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
+
+
+                                    if(geoJson2[myIndex].sopen < range.value && geoJson2[myIndex].sclose > range.value || geoJson2[myIndex].sopen == 999){
+
+                                        
+                                        geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
+                                        myIndex2++;
+                                    }
+
+
+                                }
+
+                        }
+                        else{
+
+                                for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
+
+
+                                    if(geoJson2[myIndex].wopen < range.value && geoJson2[myIndex].wclose > range.value || geoJson2[myIndex].wopen == 999){
+
+                                        
+                                        geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
+                                        myIndex2++;
+                                    }
+
+
+                                }
+                        }
+
+        			dataMap1.clearLayers();
+        			dataMap1.setGeoJSON(geoJson2Swapper);
+
+        		}//############################################################################################ MAP 3
         		else if(range.value < 20 && range.value >= 16){
+
+                    var myIndex2 =0;
 
         			map1.getContainer().style.display = 'none';
         			map2.getContainer().style.display = 'none'; 
@@ -284,11 +469,66 @@ function showUser(){
 
                     globalVar = "super1";
 
-        			dataMap1.clearLayers();
-        			dataMap1.setGeoJSON(geoJson3);
 
-        		}
+
+
+                        if(globalVar2 == "Saturday"){
+
+
+                            for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
+
+
+                                if(geoJson3[myIndex].eopen < range.value && geoJson3[myIndex].eclose > range.value || geoJson3[myIndex].eopen == 999){
+
+                                    geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+                        else if(globalVar2 =="Friday"){
+
+
+                            for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
+
+
+                                if(geoJson3[myIndex].sopen < range.value && geoJson3[myIndex].sclose > range.value || geoJson3[myIndex].sopen == 999){
+
+                                    geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+                        else{
+
+
+                            for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
+
+
+                                if(geoJson3[myIndex].wopen < range.value && geoJson3[myIndex].wclose > range.value || geoJson3[myIndex].wopen == 999){
+
+                                    geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+
+
+
+
+
+        			dataMap1.clearLayers();
+        			dataMap1.setGeoJSON(geoJson3Swapper);
+
+        		}// ######################################################################################################### MAP 4
         		else if(range.value >= 20){
+
+                    var myIndex2 =0;
 
         			map1.getContainer().style.display = 'none';
         			map2.getContainer().style.display = 'none'; 
@@ -300,8 +540,76 @@ function showUser(){
 
                     globalVar = "super2";
 
+
+
+/*
+                        if(globalVar2 == "Saturday"){
+
+
+                        }
+                        else if(globalVar2 =="Friday"){
+
+
+                        }
+                        else{
+
+*/
+
+
+
+
+
+                        if(globalVar2 == "Saturday"){
+
+
+                            for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
+
+
+                                if(geoJson4[myIndex].eopen < range.value && geoJson4[myIndex].eclose > range.value || geoJson4[myIndex].eopen < range.value && geoJson4[myIndex].eopen > geoJson4[myIndex].eclose || geoJson4[myIndex].eopen == 999){
+
+                                    geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+                        else if(globalVar2 =="Friday"){
+
+
+                            for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
+
+
+                                if(geoJson4[myIndex].sopen < range.value && geoJson4[myIndex].sclose > range.value || geoJson4[myIndex].sopen < range.value && geoJson4[myIndex].sopen > geoJson4[myIndex].sclose || geoJson4[myIndex].sopen == 999){
+
+                                    geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+                        else{
+
+
+                            for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
+
+
+                                if(geoJson4[myIndex].wopen < range.value && geoJson4[myIndex].wclose > range.value || geoJson4[myIndex].wopen < range.value && geoJson4[myIndex].wopen > geoJson4[myIndex].wclose || geoJson4[myIndex].wopen == 999){
+
+                                    geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
+                                    myIndex2++;
+                                }
+
+                            }
+
+                        }
+
+
+
+
         			dataMap1.clearLayers();
-        			dataMap1.setGeoJSON(geoJson4);
+        			dataMap1.setGeoJSON(geoJson4Swapper);
 
         		}
 

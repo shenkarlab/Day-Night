@@ -9,6 +9,11 @@ $( document ).ready(function() {
     var search = document.getElementById('search');
     var topBar = document.getElementById('topBar');
 
+
+    var topHeight = ($(window).height()*42/100);
+    var topMargin = topHeight*33.5/100;
+    var topPosition = topMargin - topHeight + "px";
+
             $('#search').hide();
 
 
@@ -33,19 +38,14 @@ $( document ).ready(function() {
     });
 
 
-    //alert($(window).height()*42/100);
 
     topBar.style.width =  $(window).width() + "px";
     topBar.style.height =  ($(window).height()*42/100) + "px";
 
-/* 
-    window.onresize = function(event){
+    topBar.style.top =  topPosition;
 
-     topBar.style.width =  $(window).width() + "px";
-     topBar.style.height =  ($(window).height()*42/100) + "px";
 
-    }
-*/
+
 
 
 $('#topBar').toggle(
@@ -57,7 +57,7 @@ $('#topBar').toggle(
     },
     function() {
 
-        $('#topBar').animate({top: "-200px"});
+        $('#topBar').animate({top: topPosition});
     }
 );
 

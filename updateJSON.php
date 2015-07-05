@@ -5,6 +5,7 @@ header("Content-Type: application/xml; charset=utf-8");
 header('Content-Type: text/html; charset=utf-8');
 
 
+
 if(!isset($_POST['inp'])){
 
 
@@ -153,7 +154,7 @@ if(!isset($_POST['inp'])){
 
 
 
-		 	if($getInfo['w_open']+0 == 0){  // Close Checking
+		 	if($getInfo['w_open']+0 == -1){  // Close Checking
 
 		 		$wOpen = "סגור";
 		 		$wClose = "";
@@ -164,7 +165,7 @@ if(!isset($_POST['inp'])){
 		 		$wClose = "-".$getInfo['w_close'];
 		 	}
 
-		 	if($getInfo['s_open']+0 == 0){
+		 	if($getInfo['s_open']+0 == -1){
 
 		 		$sOpen = "סגור";
 		 		$sClose = "";
@@ -175,7 +176,7 @@ if(!isset($_POST['inp'])){
 		 		$sClose = "-".$getInfo['s_close'];
 		 	}
 
-		 	if($getInfo['e_open']+0 == 0){
+		 	if($getInfo['e_open']+0 == -1){
 
 		 		$eOpen = "סגור";
 		 		$eClose = "";
@@ -203,7 +204,7 @@ if(!isset($_POST['inp'])){
 		 	}
 
 
-		 		if($getInfo['w_open'] == "0B"){   // 24/7 Checking
+		 	if($getInfo['w_open'] == "0B"){   // 0B Checking
 
 		 		$wOpen = "סגור לרחצה";
 		 		$wClose = "";
@@ -219,16 +220,66 @@ if(!isset($_POST['inp'])){
 
 
 
-
-
-
-
-
 		 	$wHRs = $wOpen.$wClose;
 		 	$sHRs = $sOpen.$sClose;
 		 	$eHRs = $eOpen.$eClose;
 
 
+
+			 	if($getInfo['w_open'] != "0B" && $getInfo['w_open'] != "24/7"  && $getInfo['w_open'] != "-1" ){
+
+				 	$wOpenTime = (int) ($getInfo['w_open'][0].$getInfo['w_open'][1] );
+					$wCloseTime = (int) ($getInfo['w_close'][0].$getInfo['w_close'][1] );
+				}
+				else if($getInfo['w_open'] == "0B" || $getInfo['w_open'] == "24/7" ){
+
+				 	$wOpenTime = 999;
+					$wCloseTime = 999;
+				}
+				else{
+
+				 	$wOpenTime = 888;
+					$wCloseTime = 888;
+				}
+
+
+
+
+			 	if($getInfo['s_open'] != "0B" && $getInfo['s_open'] != "24/7"  && $getInfo['s_open'] != "-1" ){
+
+				 	$sOpenTime = (int) ($getInfo['s_open'][0].$getInfo['s_open'][1] );
+					$sCloseTime = (int) ($getInfo['s_close'][0].$getInfo['s_close'][1] );
+				}
+				else if($getInfo['s_open'] == "0B" || $getInfo['s_open'] == "24/7" ){
+
+				 	$sOpenTime = 999;
+					$sloseTime = 999;
+				}
+				else{
+
+				 	$sOpenTime = 888;
+					$sCloseTime = 888;
+				}
+
+
+
+
+
+			 	if($getInfo['e_open'] != "0B" && $getInfo['e_open'] != "24/7"  && $getInfo['e_open'] != "-1" ){
+
+				 	$eOpenTime = (int) ($getInfo['e_open'][0].$getInfo['e_open'][1] );
+					$eCloseTime = (int) ($getInfo['e_close'][0].$getInfo['e_close'][1] );
+				}
+				else if($getInfo['e_open'] == "0B" || $getInfo['e_open'] == "24/7" ){
+
+				 	$eOpenTime = 999;
+					$eCloseTime = 999;
+				}
+				else{
+
+				 	$eOpenTime = 888;
+					$eCloseTime = 888;
+				}
 
 
 
@@ -251,8 +302,7 @@ if(!isset($_POST['inp'])){
 
 
 
-
-			$arr[$i] = array('map1' => $getInfo['map1'], 'map2' => $getInfo['map2'], 'map3' => $getInfo['map3'], 'map4' => $getInfo['map4'], 'map5' => $getInfo['map5'], 'type' => 'Feature', 'geometry' => $geo, 'properties' => $pro);
+			$arr[$i] = array('wopen' => $wOpenTime, 'wclose' => $wCloseTime, 'sopen' => $sOpenTime, 'sclose' => $sCloseTime, 'eopen' => $eOpenTime, 'eclose' => $eCloseTime, 'map1' => $getInfo['map1'], 'map2' => $getInfo['map2'], 'map3' => $getInfo['map3'], 'map4' => $getInfo['map4'], 'map5' => $getInfo['map5'], 'type' => 'Feature', 'geometry' => $geo, 'properties' => $pro);
 
 
 
