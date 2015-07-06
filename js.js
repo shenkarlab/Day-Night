@@ -176,7 +176,7 @@ function showUser(){
 
 
 
-                var southWest = L.latLng(32.14480417752976, 34.864768981933594),
+                var southWest = L.latLng(32.15990417752976, 34.864768981933594),
                 northEast = L.latLng(32.033400644301324, 34.692420959472656);
     
                 bounds = L.latLngBounds(southWest, northEast);//maxBounds: bounds, 
@@ -277,8 +277,13 @@ function showUser(){
 
                                     if(geoJson5[myIndex].eopen > geoJson5[myIndex].eclose || geoJson5[myIndex].eclose > range.value || geoJson5[myIndex].eopen == 999){
 
-                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
-                                        myIndex2++;
+                                        if(range.value <= 6 && range.value >= 0 && range.value > geoJson5[myIndex].eclose){}    
+                                        else{
+
+                                            geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                            myIndex2++;
+                                        }
+
                                     }
                             }
 
@@ -291,8 +296,16 @@ function showUser(){
 
                                     if(geoJson5[myIndex].sopen > geoJson5[myIndex].sclose || geoJson5[myIndex].sclose > range.value || geoJson5[myIndex].sopen == 999){
 
-                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
-                                        myIndex2++;
+
+
+
+                                        if(range.value <= 6 && range.value >= 0 && range.value > geoJson5[myIndex].sclose){}    
+                                        else{
+                                         
+                                            geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                            myIndex2++;
+                                        }
+
                                     }
                             }
 
@@ -305,8 +318,15 @@ function showUser(){
 
                                     if(geoJson5[myIndex].wopen > geoJson5[myIndex].wclose || geoJson5[myIndex].wclose > range.value || geoJson5[myIndex].wopen == 999){
 
-                                        geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
-                                        myIndex2++;
+
+                                        if(range.value <= 6 && range.value >= 0 && range.value > geoJson5[myIndex].wclose){}    
+                                        else{
+
+                                            geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
+                                            myIndex2++;
+                                        }
+
+
                                  }
 
                             }
@@ -472,8 +492,9 @@ function showUser(){
 
                                 if(geoJson3[myIndex].eopen > geoJson3[myIndex].eclose || geoJson3[myIndex].eopen < range.value && geoJson3[myIndex].eclose > range.value || geoJson3[myIndex].eopen == 999){
 
-                                    geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
-                                    myIndex2++;
+
+                                        geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
+                                        myIndex2++;
                                 }
 
                             }
