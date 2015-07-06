@@ -287,8 +287,8 @@ if(!isset($_POST['inp'])){
 
 
 
-			$des = "קטגוריה: " . $getInfo['cat'] . "<br>א-ה: " . $wHRs . "<br>ו: " . $sHRs . "<br>ש: " .$eHRs.
-			"<br>כתובת: " . $getInfo['address'] . "<br>טלפון: " . $getInfo['tel'] ;
+			$des = "קטגוריה: " . $getInfo['cat'] . "<br><b>א-ה: " . $wHRs . "<br>ו: " . $sHRs . "<br>ש: " .$eHRs.
+			"</b><br>כתובת: " . $getInfo['address'] . "<br>טלפון: " . $getInfo['tel'] ;
 
 
 

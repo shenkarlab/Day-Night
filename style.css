@@ -32,6 +32,11 @@ a{
 #map { position:absolute; top:0; bottom:0; width:100%; z-index: 100;}
 
 
+b{
+  font-size:110%;
+  font-style: bold;
+}
+
 #range {
 
   position:absolute;

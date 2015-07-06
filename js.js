@@ -157,14 +157,6 @@ function showUser(){
         		} // LOOP ENDS ##################################33
 
 
-/*
-                $.extend( geoJson1Swapper, geoJson1 );
-                $.extend( geoJson2Swapper, geoJson2 );
-                $.extend( geoJson3Swapper, geoJson3 );
-                $.extend( geoJson4Swapper, geoJson4 );
-                $.extend( geoJson5Swapper, geoJson5 );
-*/
-
 
         	} // ############################################
 
@@ -283,7 +275,7 @@ function showUser(){
 
                             for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
 
-                                    if(geoJson5[myIndex].eclose > range.value || geoJson5[myIndex].eopen == 999){
+                                    if(geoJson5[myIndex].eopen > geoJson5[myIndex].eclose || geoJson5[myIndex].eclose > range.value || geoJson5[myIndex].eopen == 999){
 
                                         geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
                                         myIndex2++;
@@ -297,7 +289,7 @@ function showUser(){
 
                             for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
 
-                                    if(geoJson5[myIndex].sclose > range.value || geoJson5[myIndex].sopen == 999){
+                                    if(geoJson5[myIndex].sopen > geoJson5[myIndex].sclose || geoJson5[myIndex].sclose > range.value || geoJson5[myIndex].sopen == 999){
 
                                         geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
                                         myIndex2++;
@@ -311,7 +303,7 @@ function showUser(){
 
                             for(var myIndex=0; myIndex<geoJson5.length; myIndex++){ 
 
-                                    if(geoJson5[myIndex].wclose > range.value || geoJson5[myIndex].wopen == 999){
+                                    if(geoJson5[myIndex].wopen > geoJson5[myIndex].wclose || geoJson5[myIndex].wclose > range.value || geoJson5[myIndex].wopen == 999){
 
                                         geoJson5Swapper[myIndex2] = jQuery.extend(true, {},  geoJson5[myIndex] );
                                         myIndex2++;
@@ -346,7 +338,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
 
 
-                                    if(geoJson1[myIndex].eclose > range.value  || geoJson1[myIndex].eopen == 999){
+                                    if(geoJson1[myIndex].eopen > geoJson1[myIndex].eclose || geoJson1[myIndex].eclose > range.value  || geoJson1[myIndex].eopen == 999){
 
                                         geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
                                         myIndex2++;
@@ -360,7 +352,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
 
 
-                                    if(geoJson1[myIndex].sclose > range.value  || geoJson1[myIndex].sopen == 999){
+                                    if(geoJson1[myIndex].sopen > geoJson1[myIndex].sclose || geoJson1[myIndex].sclose > range.value  || geoJson1[myIndex].sopen == 999){
 
                                         geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
                                         myIndex2++;
@@ -375,7 +367,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson1.length; myIndex++){ 
 
 
-                                    if(geoJson1[myIndex].wclose > range.value  || geoJson1[myIndex].wopen == 999){
+                                    if(geoJson1[myIndex].wopen > geoJson1[myIndex].wclose || geoJson1[myIndex].wclose > range.value  || geoJson1[myIndex].wopen == 999){
 
                                         geoJson1Swapper[myIndex2] = jQuery.extend(true, {},  geoJson1[myIndex] );
                                         myIndex2++;
@@ -409,7 +401,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
 
 
-                                    if(geoJson2[myIndex].eopen < range.value && geoJson2[myIndex].eclose > range.value || geoJson2[myIndex].eopen == 999){
+                                    if(geoJson2[myIndex].eopen > geoJson2[myIndex].eclose || geoJson2[myIndex].eopen < range.value && geoJson2[myIndex].eclose > range.value || geoJson2[myIndex].eopen == 999){
 
                                         
                                         geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
@@ -425,7 +417,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
 
 
-                                    if(geoJson2[myIndex].sopen < range.value && geoJson2[myIndex].sclose > range.value || geoJson2[myIndex].sopen == 999){
+                                    if(geoJson2[myIndex].sopen > geoJson2[myIndex].sclose || geoJson2[myIndex].sopen < range.value && geoJson2[myIndex].sclose > range.value || geoJson2[myIndex].sopen == 999){
 
                                         
                                         geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
@@ -441,7 +433,7 @@ function showUser(){
                                 for(var myIndex=0; myIndex<geoJson2.length; myIndex++){ 
 
 
-                                    if(geoJson2[myIndex].wopen < range.value && geoJson2[myIndex].wclose > range.value || geoJson2[myIndex].wopen == 999){
+                                    if(geoJson2[myIndex].wopen > geoJson2[myIndex].wclose || geoJson2[myIndex].wopen < range.value && geoJson2[myIndex].wclose > range.value || geoJson2[myIndex].wopen == 999){
 
                                         
                                         geoJson2Swapper[myIndex2] = jQuery.extend(true, {},  geoJson2[myIndex] );
@@ -478,7 +470,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
 
 
-                                if(geoJson3[myIndex].eopen < range.value && geoJson3[myIndex].eclose > range.value || geoJson3[myIndex].eopen == 999){
+                                if(geoJson3[myIndex].eopen > geoJson3[myIndex].eclose || geoJson3[myIndex].eopen < range.value && geoJson3[myIndex].eclose > range.value || geoJson3[myIndex].eopen == 999){
 
                                     geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
                                     myIndex2++;
@@ -493,7 +485,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
 
 
-                                if(geoJson3[myIndex].sopen < range.value && geoJson3[myIndex].sclose > range.value || geoJson3[myIndex].sopen == 999){
+                                if(geoJson3[myIndex].sopen > geoJson3[myIndex].sclose || geoJson3[myIndex].sopen < range.value && geoJson3[myIndex].sclose > range.value || geoJson3[myIndex].sopen == 999){
 
                                     geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
                                     myIndex2++;
@@ -508,7 +500,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson3.length; myIndex++){ 
 
 
-                                if(geoJson3[myIndex].wopen < range.value && geoJson3[myIndex].wclose > range.value || geoJson3[myIndex].wopen == 999){
+                                if( geoJson3[myIndex].wopen > geoJson3[myIndex].wclose || geoJson3[myIndex].wopen < range.value && geoJson3[myIndex].wclose > range.value || geoJson3[myIndex].wopen == 999){
 
                                     geoJson3Swapper[myIndex2] = jQuery.extend(true, {},  geoJson3[myIndex] );
                                     myIndex2++;
@@ -565,7 +557,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
 
 
-                                if(geoJson4[myIndex].eopen < range.value && geoJson4[myIndex].eclose > range.value || geoJson4[myIndex].eopen < range.value && geoJson4[myIndex].eopen > geoJson4[myIndex].eclose || geoJson4[myIndex].eopen == 999){
+                                if(geoJson4[myIndex].eopen < range.value && geoJson4[myIndex].eclose > range.value ||  geoJson4[myIndex].eopen > geoJson4[myIndex].eclose ||  geoJson4[myIndex].eopen == 999){
 
                                     geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
                                     myIndex2++;
@@ -580,7 +572,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
 
 
-                                if(geoJson4[myIndex].sopen < range.value && geoJson4[myIndex].sclose > range.value || geoJson4[myIndex].sopen < range.value && geoJson4[myIndex].sopen > geoJson4[myIndex].sclose || geoJson4[myIndex].sopen == 999){
+                                if(geoJson4[myIndex].sopen < range.value && geoJson4[myIndex].sclose > range.value || geoJson4[myIndex].sopen > geoJson4[myIndex].sclose ||  geoJson4[myIndex].sopen == 999){
 
                                     geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
                                     myIndex2++;
@@ -595,7 +587,7 @@ function showUser(){
                             for(var myIndex=0; myIndex<geoJson4.length; myIndex++){ 
 
 
-                                if(geoJson4[myIndex].wopen < range.value && geoJson4[myIndex].wclose > range.value || geoJson4[myIndex].wopen < range.value && geoJson4[myIndex].wopen > geoJson4[myIndex].wclose || geoJson4[myIndex].wopen == 999){
+                                if(geoJson4[myIndex].wopen < range.value && geoJson4[myIndex].wclose > range.value || geoJson4[myIndex].wopen > geoJson4[myIndex].wclose || geoJson4[myIndex].wopen == 999){
 
                                     geoJson4Swapper[myIndex2] = jQuery.extend(true, {},  geoJson4[myIndex] );
                                     myIndex2++;
